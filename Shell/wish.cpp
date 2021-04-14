@@ -11,12 +11,31 @@
 using namespace std;
 char error_message[30] = "An error has occurred\n";
 
+//tokenizer should be able to separate each input command into tokens
+//any number of any white-space character should be handled
+//assume that '>' and '&' commands don't have to be surrounded by white-space, but they can be
 vector<string> tokenize(string input_command)
 {
     vector<string> in_tokens;
-    in_tokens.push_back(input_command);
+    string ws = " \t\n\v\f\r";
+    size_t init_pos = 0;
+    size_t final_pos;
+    string temp_string;
 
-    //TODO: implement this
+    while (init_pos != string::npos)
+    {
+        init_pos = input_command.find_first_not_of(ws, init_pos);
+        if (init_pos != string::npos)
+        {
+            final_pos = input_command.find_first_of(ws, init_pos + 1);
+            temp_string = input_command.substr(init_pos, final_pos - init_pos);
+            init_pos = final_pos;
+            cout << temp_string << endl;
+        }
+    }
+
+    //in_tokens.push_back(input_command);
+
     return (in_tokens);
 }
 
@@ -44,13 +63,13 @@ void batch(string data_from_file)
     //char exit_command[] = "exit";
 
     //look trhough the data
-    do 
+    do
     {
         //get the position of first found \n, always start searching from the point stopped before
         newLinePos = data_from_file.find_first_of("\n", newLinePos);
 
         //get the substring from the oldPos to the next \n, grab one more character which is \n
-        input_command = data_from_file.substr(oldPos, newLinePos - oldPos);
+        input_command = data_from_file.substr(oldPos, newLinePos - oldPos + 1);
 
         //increment newLinePos to start looking for \n AFTER last found \n
         newLinePos++;
@@ -60,14 +79,12 @@ void batch(string data_from_file)
 
         input_tokens = tokenize(input_command);
 
-        cout << input_tokens[0] << endl;
         // && (strcmp(input_tokens[0].c_str(), exit_command) != 0)
-    }
-    while ( (newLinePos < (data_from_file.length() )));
-    
+    } while ((newLinePos < (data_from_file.length())));
 }
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[])
+{
 
     int fd;
     string data_from_file;
@@ -100,10 +117,11 @@ int main(int argc, char *argv[]){
         }
 
         //check if the file was empty
-        if (data_from_file.length() != 0) {
+        if (data_from_file.length() != 0)
+        {
             batch(data_from_file);
         }
-    
+
         close(fd);
 
         exit(0);
