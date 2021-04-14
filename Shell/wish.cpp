@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <iterator>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <string>
@@ -11,31 +11,83 @@
 using namespace std;
 char error_message[30] = "An error has occurred\n";
 
-//tokenizer should be able to separate each input command into tokens
+//tokenizer should be able to separate each input command(single line) into tokens
 //any number of any white-space character should be handled
 //assume that '>' and '&' commands don't have to be surrounded by white-space, but they can be
 vector<string> tokenize(string input_command)
-{
-    vector<string> in_tokens;
-    string ws = " \t\n\v\f\r";
-    size_t init_pos = 0;
+{   
+    //define all the vars
+    vector<string> in_tokens;  //for the final tokens
+    string ws = " \t\n\v\f\r";   //will search NOT for any of these; ws for white-space
+    string special = ">&";      //also will search for any of these
+    size_t init_pos = 0;        //some other vars to manipulate wit the string
     size_t final_pos;
     string temp_string;
+    size_t pos_special = 0;
+    string temp_string_special = "";
 
     while (init_pos != string::npos)
-    {
+    {   
+        //look for any char, but not any from ws
         init_pos = input_command.find_first_not_of(ws, init_pos);
+
+        //if there is something
         if (init_pos != string::npos)
         {
+            //look for the next char which is this time FROM the ws
+            //get substring from init_pos
+            //init_pos should be updated, so next time program doesn't search in the previous indices 
             final_pos = input_command.find_first_of(ws, init_pos + 1);
             temp_string = input_command.substr(init_pos, final_pos - init_pos);
             init_pos = final_pos;
-            cout << temp_string << endl;
+            
+            //the chunk of code is good with whitespaces
+            //now we need to check if there are any '>' or '&' in a separate command
+            pos_special = 0;
+
+            //loop until there is a special command
+            while ((temp_string.find(">") != string::npos) || (temp_string.find("&") != string::npos))
+            {   
+                //if '>' comes before '&' then 
+                if (temp_string.find(">") < temp_string.find("&"))
+                {
+                    //find the position of '>'
+                    pos_special = temp_string.find(">");
+                    //get the substing from 0 to '>'
+                    temp_string_special = temp_string.substr(0, pos_special);
+                    //sometimes there are empty strings because of the substr(0,0)
+                    //do not include them
+                    if (!temp_string_special.empty())
+                    {
+                        in_tokens.push_back(temp_string_special);
+                    }
+                    //do not forget '>'
+                    in_tokens.push_back(">");
+                    //erase the command before '>' and erase '>' too
+                    temp_string.erase(0, pos_special + 1);
+                }
+                else
+                {   
+                    //the same process here with '&'
+                    pos_special = temp_string.find("&");
+                    temp_string_special = temp_string.substr(0, pos_special);
+                    if (!temp_string_special.empty())
+                    {
+                        in_tokens.push_back(temp_string_special);
+                    }
+                    in_tokens.push_back("&");
+                    temp_string.erase(0, pos_special + 1);
+                }
+            }
+            //after the '>' or '&' cases there are cases where temp_string remains empty
+            //do not need it
+            if (!temp_string.empty())
+            {
+                in_tokens.push_back(temp_string);
+            }
         }
     }
-
-    //in_tokens.push_back(input_command);
-
+    //finally
     return (in_tokens);
 }
 
@@ -50,6 +102,12 @@ void interactive()
         cout << "wish> ";
         getline(cin, input_command);
         input_tokens = tokenize(input_command);
+
+        //test
+        for (vector<string>::const_iterator i = input_tokens.begin(); i != input_tokens.end(); ++i)
+        {
+            cout << *i << endl;
+        }
         //strcmp(input_tokens[0].c_str(), exit_command) != 0
     } while (cin);
 }
@@ -78,6 +136,12 @@ void batch(string data_from_file)
         oldPos = newLinePos;
 
         input_tokens = tokenize(input_command);
+
+        //test
+        for (vector<string>::const_iterator i = input_tokens.begin(); i != input_tokens.end(); ++i)
+        {
+            cout << *i << endl;
+        }
 
         // && (strcmp(input_tokens[0].c_str(), exit_command) != 0)
     } while ((newLinePos < (data_from_file.length())));
