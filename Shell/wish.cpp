@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+#include <fstream>
 
 using namespace std;
 char error_message[30] = "An error has occurred\n";
@@ -17,6 +18,9 @@ enum command_kind
     CD,
     PATH
 };
+vector<string> path;
+
+
 
 //tokenizer should be able to separate each input command(single line) into tokens
 //any number of any white-space character should be handled
@@ -98,6 +102,7 @@ vector<string> tokenize(string input_command)
     return (in_tokens);
 }
 
+//this function returns the kind of the command passed into it
 command_kind resolve_kind(string command)
 {
     if (command.compare("exit") == 0)
@@ -115,23 +120,54 @@ command_kind resolve_kind(string command)
     return OTHER;
 }
 
+void exit_shell(vector<string> args){
+    if (args.empty()) {
+        exit(0);
+    } else {
+        write(STDERR_FILENO, error_message, strlen(error_message));
+    }
+}
+
+void cd_shell(vector<string> args) {
+    if ( args.size() == 1 ) {
+        if (chdir(args[0].c_str()) == -1) {
+            write(STDERR_FILENO, error_message, strlen(error_message));
+        }
+    } else {
+        write(STDERR_FILENO, error_message, strlen(error_message));
+    }
+}
+
+void path_shell(vector<string> args) {
+    if (args.empty()) {
+        path.clear();
+    } else {
+        for (int i = 0; i < args.size(); i++) {
+            path.push_back(args[i]);
+        }    
+    }
+}
+
 void execute(vector<string> commands)
 {
     switch (resolve_kind(commands[0]))
     {
     case EXIT:
     {
-        cout << "PERFORM EXIT!" << endl;
+        commands.erase(commands.begin());
+        exit_shell( commands );
         break;
     }
     case CD:
     {
-        cout << "PERFORM CD!" << endl;
+        commands.erase(commands.begin());
+        cd_shell( commands );
         break;
     }
     case PATH:
     {
-        cout << "PERFORM PATH!" << endl;
+        commands.erase(commands.begin());
+        path_shell( commands );
         break;
     }
     default:
@@ -194,10 +230,12 @@ void execute(vector<string> commands)
     int main(int argc, char *argv[])
     {
 
+
         int fd;
         string data_from_file;
         int ret;
         char buffer[4096];
+        path.push_back("/bin");
 
         //choose the mode
         if (argc == 1)
