@@ -203,7 +203,7 @@ int redirect_status(vector<string> args)
 }
 
 //performs any other type of command; command passed in args
-void other_shell(vector<string> args)
+void other_shell(vector<string> args, bool isParallel)
 {
     int red_status = redirect_status(args);
 
@@ -270,18 +270,22 @@ void other_shell(vector<string> args)
             else if (ret == 0) //if this is a child proccess
             {
                 if (red_status == 1) //if redirection is valid
-                {   
+                {
                     //open the specified file
                     int red_fd = open(args[red_loc + 1].c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
-                    
+
                     //error check
-                    if (red_fd != -1){
+                    if (red_fd != -1)
+                    {
                         //STDERR and STDOUT are now linked to red_fd(file)
-                        if ( (dup2(red_fd, STDERR_FILENO) == -1) || (dup2(red_fd, STDOUT_FILENO) == -1) ){
+                        if ((dup2(red_fd, STDERR_FILENO) == -1) || (dup2(red_fd, STDOUT_FILENO) == -1))
+                        {
                             write(STDERR_FILENO, error_message, strlen(error_message));
                         }
                         close(red_fd);
-                    } else {
+                    }
+                    else
+                    {
                         write(STDERR_FILENO, error_message, strlen(error_message));
                     }
                 }
@@ -291,9 +295,10 @@ void other_shell(vector<string> args)
             }
             else
             {
-                if (wait(NULL) == -1)
+                if (!isParallel)
                 {
-                    write(STDERR_FILENO, error_message, strlen(error_message));
+                    pid_t wpid;
+                    while ((wpid = wait(NULL)) > 0);
                 }
             }
         }
@@ -334,7 +339,25 @@ void execute(vector<string> commands)
         }
         default:
         {
-            other_shell(commands);
+            //vector for parallel proccesses
+            vector<string> cmd;
+            for (int i = 0; i < commands.size(); i++)
+            {
+                //run a child proccess once you catch a '&'
+                if (commands[i].compare("&") == 0){
+                    other_shell(cmd, true);
+                    cmd.clear();
+                }
+                else
+                {
+                    cmd.push_back(commands[i]);
+                }
+            }
+            //once the OLDEST parent will be done with collecting commands
+            //it will call the function (PARALLELLY) for the last time, while other children still work on their commands
+            //the cmd vector will hold anything after the last '&'. It can be empty, or just a simple command
+            //cmd vector can also collect all the elements from initial vector commands if no '&' will be met
+            other_shell(cmd, false);
             break;
         }
         }
