@@ -20,8 +20,6 @@ enum command_kind
 };
 vector<string> path;
 
-
-
 //tokenizer should be able to separate each input command(single line) into tokens
 //any number of any white-space character should be handled
 //assume that '>' and '&' commands don't have to be surrounded by white-space, but they can be
@@ -120,162 +118,325 @@ command_kind resolve_kind(string command)
     return OTHER;
 }
 
-void exit_shell(vector<string> args){
-    if (args.empty()) {
+//performs exit; no command in args
+void exit_shell(vector<string> args)
+{
+    if (args.empty())
+    {
         exit(0);
-    } else {
+    }
+    else
+    {
         write(STDERR_FILENO, error_message, strlen(error_message));
     }
 }
-
-void cd_shell(vector<string> args) {
-    if ( args.size() == 1 ) {
-        if (chdir(args[0].c_str()) == -1) {
+//performs change of directory; no command in args
+void cd_shell(vector<string> args)
+{
+    if (args.size() == 1)
+    {
+        if (chdir(args[0].c_str()) == -1)
+        {
             write(STDERR_FILENO, error_message, strlen(error_message));
         }
-    } else {
+    }
+    else
+    {
         write(STDERR_FILENO, error_message, strlen(error_message));
     }
 }
 
-void path_shell(vector<string> args) {
-    if (args.empty()) {
+//performs change of path dir's; no command in args
+void path_shell(vector<string> args)
+{
+    if (args.empty())
+    {
         path.clear();
-    } else {
-        for (int i = 0; i < args.size(); i++) {
+    }
+    else
+    {
+        path.clear();
+        for (int i = 0; i < args.size(); i++)
+        {
             path.push_back(args[i]);
-        }    
+        }
+    }
+}
+
+//returns: -1 - invalid statement; 0 - NO redirection; 1 - valid statement with redirection
+int redirect_status(vector<string> args)
+{
+    int redirect_cmd_count = 0; //simply count '>'
+    int files_count = 0;        //simply count args after first '>' found
+    int out_status;
+
+    for (int i = 0; i < args.size(); i++)
+    {
+        if (args[i].compare(">") == 0)
+        {
+            redirect_cmd_count++;
+        }
+        else if (redirect_cmd_count > 0)
+        {
+            files_count++;
+        }
+    }
+
+    //-1: more than one arg(file) after '>', more than one '>'s, only '>' and no file
+    //0:  no '>' - no files,respectively, let access() check if the cmd is legal
+    //1: only one '>' and only one arg(file) after it
+    if (((redirect_cmd_count > 1) || (files_count > 1)) ||
+        ((redirect_cmd_count == 1) && (files_count == 0)) ||
+        ((redirect_cmd_count == 1) && (files_count == 1) && (args.size() == 2)))
+    {
+        out_status = -1;
+    }
+    else if ((redirect_cmd_count == 1) && (files_count == 1))
+    {
+        out_status = 1;
+    }
+    else
+    {
+        out_status = 0;
+    }
+    return out_status;
+}
+
+//performs any other type of command; command passed in args
+void other_shell(vector<string> args)
+{
+    int red_status = redirect_status(args);
+
+    //if the command makese sense
+    if (red_status != -1)
+    {
+        int red_loc;
+        int size_to_allocate;
+
+        //if there is an '>', get its location
+        if (red_status == 1)
+        {
+            for (int i = 0; i < args.size(); i++)
+            {
+                if (args[i].compare(">") == 0)
+                {
+                    red_loc = i;
+                }
+            }
+        }
+
+        //determine how much memory to allocate for the args
+        if (red_status == 1)
+        {
+            size_to_allocate = red_loc;
+        }
+        else
+        {
+            size_to_allocate = args.size();
+        }
+
+        //put the args into a char **array
+        char **new_args = new char *[size_to_allocate + 1];
+        for (int i = 0; i < args.size(); i++)
+        {
+            if (args[i].compare(">") == 0)
+                break;
+            new_args[i] = strdup(args[i].c_str());
+        }
+        //LAST element is nullptr
+        new_args[size_to_allocate] = nullptr;
+
+        //determine if the command is accessible
+        bool accessible = false;
+        for (int i = 0; i < path.size(); i++)
+        {
+            string abs_path = path[i] + '/' + args[0];
+            if (access(abs_path.c_str(), X_OK) == 0)
+            {
+                accessible = true;
+                new_args[0] = strdup(abs_path.c_str());
+                break;
+            }
+        }
+
+        //now execute it or print out the error
+        if (accessible)
+        {
+            pid_t ret = fork(); //new proccess
+            if (ret < 0)
+            {
+                write(STDERR_FILENO, error_message, strlen(error_message));
+            }
+            else if (ret == 0) //if this is a child proccess
+            {
+                if (red_status == 1) //if redirection is valid
+                {   
+                    //open the specified file
+                    int red_fd = open(args[red_loc + 1].c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
+                    
+                    //error check
+                    if (red_fd != -1){
+                        //STDERR and STDOUT are now linked to red_fd(file)
+                        if ( (dup2(red_fd, STDERR_FILENO) == -1) || (dup2(red_fd, STDOUT_FILENO) == -1) ){
+                            write(STDERR_FILENO, error_message, strlen(error_message));
+                        }
+                        close(red_fd);
+                    } else {
+                        write(STDERR_FILENO, error_message, strlen(error_message));
+                    }
+                }
+                //execute the command
+                execv(new_args[0], new_args);
+                write(STDERR_FILENO, error_message, strlen(error_message));
+            }
+            else
+            {
+                if (wait(NULL) == -1)
+                {
+                    write(STDERR_FILENO, error_message, strlen(error_message));
+                }
+            }
+        }
+        else
+        {
+            write(STDERR_FILENO, error_message, strlen(error_message));
+        }
+    }
+    else
+    {
+        write(STDERR_FILENO, error_message, strlen(error_message));
     }
 }
 
 void execute(vector<string> commands)
 {
-    switch (resolve_kind(commands[0]))
+    if (!commands.empty())
     {
-    case EXIT:
-    {
-        commands.erase(commands.begin());
-        exit_shell( commands );
-        break;
-    }
-    case CD:
-    {
-        commands.erase(commands.begin());
-        cd_shell( commands );
-        break;
-    }
-    case PATH:
-    {
-        commands.erase(commands.begin());
-        path_shell( commands );
-        break;
-    }
-    default:
-    {
-        cout << "PERFORM NON-BUILT_IN COMMAND!" << endl;
-        break;
-    }
+        switch (resolve_kind(commands[0]))
+        {
+        case EXIT:
+        {
+            commands.erase(commands.begin());
+            exit_shell(commands);
+            break;
+        }
+        case CD:
+        {
+            commands.erase(commands.begin());
+            cd_shell(commands);
+            break;
+        }
+        case PATH:
+        {
+            commands.erase(commands.begin());
+            path_shell(commands);
+            break;
+        }
+        default:
+        {
+            other_shell(commands);
+            break;
+        }
+        }
     }
 }
 
-    void interactive()
+void interactive()
+{
+    string input_command;
+    //char exit_command[] = "exit";
+    vector<string> input_tokens;
+
+    do
     {
-        string input_command;
-        //char exit_command[] = "exit";
-        vector<string> input_tokens;
+        cout << "wish> ";
+        getline(cin, input_command);
+        input_tokens = tokenize(input_command);
+        execute(input_tokens);
 
-        do
-        {
-            cout << "wish> ";
-            getline(cin, input_command);
-            input_tokens = tokenize(input_command);
-            execute(input_tokens);
+        //strcmp(input_tokens[0].c_str(), exit_command) != 0
+    } while (cin);
+}
 
-        
-            //strcmp(input_tokens[0].c_str(), exit_command) != 0
-        } while (cin);
+void batch(string data_from_file)
+{
+    string input_command;
+    size_t newLinePos = 0;
+    size_t oldPos = 0;
+    vector<string> input_tokens;
+    //char exit_command[] = "exit";
+
+    //look trhough the data
+    do
+    {
+        //get the position of first found \n, always start searching from the point stopped before
+        newLinePos = data_from_file.find_first_of("\n", newLinePos);
+
+        //get the substring from the oldPos to the next \n, grab one more character which is \n
+        input_command = data_from_file.substr(oldPos, newLinePos - oldPos + 1);
+
+        //increment newLinePos to start looking for \n AFTER last found \n
+        newLinePos++;
+
+        //update oldPos for the next input_command
+        oldPos = newLinePos;
+
+        input_tokens = tokenize(input_command);
+
+        execute(input_tokens);
+
+        // && (strcmp(input_tokens[0].c_str(), exit_command) != 0)
+    } while ((newLinePos < (data_from_file.length())));
+}
+
+int main(int argc, char *argv[])
+{
+
+    int fd;
+    string data_from_file;
+    int ret;
+    char buffer[4096];
+    path.push_back("/bin");
+
+    //choose the mode
+    if (argc == 1)
+    {
+        //interactive mode (no file for batch)
+        interactive();
+        exit(0);
     }
-
-    void batch(string data_from_file)
+    else if (argc == 2)
     {
-        string input_command;
-        size_t newLinePos = 0;
-        size_t oldPos = 0;
-        vector<string> input_tokens;
-        //char exit_command[] = "exit";
+        //batch mode
+        fd = open(argv[1], O_RDONLY);
 
-        //look trhough the data
-        do
+        //check if the file is valid
+        if (fd < 0)
         {
-            //get the position of first found \n, always start searching from the point stopped before
-            newLinePos = data_from_file.find_first_of("\n", newLinePos);
-
-            //get the substring from the oldPos to the next \n, grab one more character which is \n
-            input_command = data_from_file.substr(oldPos, newLinePos - oldPos + 1);
-
-            //increment newLinePos to start looking for \n AFTER last found \n
-            newLinePos++;
-
-            //update oldPos for the next input_command
-            oldPos = newLinePos;
-
-            input_tokens = tokenize(input_command);
-
-            execute(input_tokens);
-
-            // && (strcmp(input_tokens[0].c_str(), exit_command) != 0)
-        } while ((newLinePos < (data_from_file.length())));
-    }
-
-    int main(int argc, char *argv[])
-    {
-
-
-        int fd;
-        string data_from_file;
-        int ret;
-        char buffer[4096];
-        path.push_back("/bin");
-
-        //choose the mode
-        if (argc == 1)
-        {
-            //interactive mode (no file for batch)
-            interactive();
-            exit(0);
-        }
-        else if (argc == 2)
-        {
-            //batch mode
-            fd = open(argv[1], O_RDONLY);
-
-            //check if the file is valid
-            if (fd < 0)
-            {
-                write(STDERR_FILENO, error_message, strlen(error_message));
-                exit(1);
-            }
-
-            //read everything from the file using a buffer to the string "data"
-            while ((ret = read(fd, buffer, 4096)) > 0)
-            {
-                data_from_file.append(buffer, ret);
-            }
-
-            //check if the file was empty
-            if (data_from_file.length() != 0)
-            {
-                batch(data_from_file);
-            }
-
-            close(fd);
-
-            exit(0);
-        }
-        else
-        {
-            //more than one argument(file) passed
             write(STDERR_FILENO, error_message, strlen(error_message));
             exit(1);
         }
+
+        //read everything from the file using a buffer to the string "data"
+        while ((ret = read(fd, buffer, 4096)) > 0)
+        {
+            data_from_file.append(buffer, ret);
+        }
+
+        //check if the file was empty
+        if (data_from_file.length() != 0)
+        {
+            batch(data_from_file);
+        }
+
+        close(fd);
+
+        exit(0);
     }
+    else
+    {
+        //more than one argument(file) passed
+        write(STDERR_FILENO, error_message, strlen(error_message));
+        exit(1);
+    }
+}
