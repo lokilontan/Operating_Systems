@@ -205,101 +205,103 @@ int redirect_status(vector<string> args)
 //performs any other type of command; command passed in args
 void other_shell(vector<string> args, bool isParallel)
 {
-    int red_status = redirect_status(args);
-
-    //if the command makese sense
-    if (red_status != -1)
+    if (!args.empty())
     {
-        int red_loc;
-        int size_to_allocate;
+        int red_status = redirect_status(args);
 
-        //if there is an '>', get its location
-        if (red_status == 1)
+        //if the command makese sense
+        if (red_status != -1)
         {
-            for (int i = 0; i < args.size(); i++)
+            int red_loc;
+            int size_to_allocate;
+
+            //if there is an '>', get its location
+            if (red_status == 1)
             {
-                if (args[i].compare(">") == 0)
+                for (int i = 0; i < args.size(); i++)
                 {
-                    red_loc = i;
-                }
-            }
-        }
-
-        //determine how much memory to allocate for the args
-        if (red_status == 1)
-        {
-            size_to_allocate = red_loc;
-        }
-        else
-        {
-            size_to_allocate = args.size();
-        }
-
-        //put the args into a char **array
-        char **new_args = new char *[size_to_allocate + 1];
-        for (int i = 0; i < args.size(); i++)
-        {
-            if (args[i].compare(">") == 0)
-                break;
-            new_args[i] = strdup(args[i].c_str());
-        }
-        //LAST element is nullptr
-        new_args[size_to_allocate] = nullptr;
-
-        //determine if the command is accessible
-        bool accessible = false;
-        for (int i = 0; i < path.size(); i++)
-        {
-            string abs_path = path[i] + '/' + args[0];
-            if (access(abs_path.c_str(), X_OK) == 0)
-            {
-                accessible = true;
-                new_args[0] = strdup(abs_path.c_str());
-                break;
-            }
-        }
-
-        //now execute it or print out the error
-        if (accessible)
-        {
-            pid_t ret = fork(); //new proccess
-            if (ret < 0)
-            {
-                write(STDERR_FILENO, error_message, strlen(error_message));
-            }
-            else if (ret == 0) //if this is a child proccess
-            {
-                if (red_status == 1) //if redirection is valid
-                {
-                    //open the specified file
-                    int red_fd = open(args[red_loc + 1].c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
-
-                    //error check
-                    if (red_fd != -1)
+                    if (args[i].compare(">") == 0)
                     {
-                        //STDERR and STDOUT are now linked to red_fd(file)
-                        if ((dup2(red_fd, STDERR_FILENO) == -1) || (dup2(red_fd, STDOUT_FILENO) == -1))
-                        {
-                            write(STDERR_FILENO, error_message, strlen(error_message));
-                        }
-                        close(red_fd);
-                    }
-                    else
-                    {
-                        write(STDERR_FILENO, error_message, strlen(error_message));
+                        red_loc = i;
                     }
                 }
-                //execute the command
-                execv(new_args[0], new_args);
-                write(STDERR_FILENO, error_message, strlen(error_message));
+            }
+
+            //determine how much memory to allocate for the args
+            if (red_status == 1)
+            {
+                size_to_allocate = red_loc;
             }
             else
             {
-                if (!isParallel)
+                size_to_allocate = args.size();
+            }
+
+            //put the args into a char **array
+            char **new_args = new char *[size_to_allocate + 1];
+            for (int i = 0; i < args.size(); i++)
+            {
+                if (args[i].compare(">") == 0)
+                    break;
+                new_args[i] = strdup(args[i].c_str());
+            }
+            //LAST element is nullptr
+            new_args[size_to_allocate] = nullptr;
+
+            //determine if the command is accessible
+            bool accessible = false;
+            for (int i = 0; i < path.size(); i++)
+            {
+                string abs_path = path[i] + '/' + args[0];
+                if (access(abs_path.c_str(), X_OK) == 0)
                 {
-                    pid_t wpid;
-                    while ((wpid = wait(NULL)) > 0);
+                    accessible = true;
+                    new_args[0] = strdup(abs_path.c_str());
+                    break;
                 }
+            }
+
+            //now execute it or print out the error
+            if (accessible)
+            {
+                pid_t ret = fork(); //new proccess
+                if (ret < 0)
+                {
+                    write(STDERR_FILENO, error_message, strlen(error_message));
+                }
+                else if (ret == 0) //if this is a child proccess
+                {
+                    if (red_status == 1) //if redirection is valid
+                    {
+                        //open the specified file
+                        int red_fd = open(args[red_loc + 1].c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
+
+                        //error check
+                        if (red_fd != -1)
+                        {
+                            //STDERR and STDOUT are now linked to red_fd(file)
+                            if ((dup2(red_fd, STDERR_FILENO) == -1) || (dup2(red_fd, STDOUT_FILENO) == -1))
+                            {
+                                write(STDERR_FILENO, error_message, strlen(error_message));
+                            }
+                            close(red_fd);
+                        }
+                        else
+                        {
+                            write(STDERR_FILENO, error_message, strlen(error_message));
+                        }
+                    }
+                    //execute the command
+                    execv(new_args[0], new_args);
+                    write(STDERR_FILENO, error_message, strlen(error_message));
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+                write(STDERR_FILENO, error_message, strlen(error_message));
             }
         }
         else
@@ -307,9 +309,11 @@ void other_shell(vector<string> args, bool isParallel)
             write(STDERR_FILENO, error_message, strlen(error_message));
         }
     }
-    else
+    if (!isParallel)
     {
-        write(STDERR_FILENO, error_message, strlen(error_message));
+        pid_t wpid;
+        while ((wpid = wait(NULL)) > 0)
+            ;
     }
 }
 
@@ -344,7 +348,8 @@ void execute(vector<string> commands)
             for (int i = 0; i < commands.size(); i++)
             {
                 //run a child proccess once you catch a '&'
-                if (commands[i].compare("&") == 0){
+                if (commands[i].compare("&") == 0)
+                {
                     other_shell(cmd, true);
                     cmd.clear();
                 }
