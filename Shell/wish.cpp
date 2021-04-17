@@ -2,12 +2,13 @@
 #include <iterator>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <string>
+#include <string.h>
+#include <cstring>
 #include <vector>
 #include <sys/types.h>
 #include <sys/uio.h>
+#include <sys/wait.h>
 #include <unistd.h>
-#include <fstream>
 
 using namespace std;
 char error_message[30] = "An error has occurred\n";
@@ -19,6 +20,70 @@ enum command_kind
     PATH
 };
 vector<string> path;
+
+//function declarations
+void interactive();
+void batch(string data_from_file);
+void execute(vector<string> commands);
+vector<string> tokenize(string input_command);
+command_kind resolve_kind(string command);
+void exit_shell(vector<string> args);
+void cd_shell(vector<string> args);
+void path_shell(vector<string> args);
+void other_shell(vector<string> args, bool isParallel);
+int redirect_status(vector<string> args);
+
+int main(int argc, char *argv[])
+{
+
+    int fd;
+    string data_from_file;
+    int ret;
+    char buffer[4096];
+    path.push_back("/bin");
+
+    //choose the mode
+    if (argc == 1)
+    {
+        //interactive mode (no file for batch)
+        interactive();
+        exit(0);
+    }
+    else if (argc == 2)
+    {
+        //batch mode
+        fd = open(argv[1], O_RDONLY);
+
+        //check if the file is valid
+        if (fd < 0)
+        {
+            write(STDERR_FILENO, error_message, strlen(error_message));
+            exit(1);
+        }
+
+        //read everything from the file using a buffer to the string "data"
+        while ((ret = read(fd, buffer, 4096)) > 0)
+        {
+            data_from_file.append(buffer, ret);
+        }
+
+        //check if the file was empty
+        if (data_from_file.length() != 0)
+        {
+            batch(data_from_file);
+        }
+
+        close(fd);
+
+        exit(0);
+    }
+    else
+    {
+        //more than one argument(file) passed
+        write(STDERR_FILENO, error_message, strlen(error_message));
+        exit(1);
+    }
+}
 
 //tokenizer should be able to separate each input command(single line) into tokens
 //any number of any white-space character should be handled
@@ -130,6 +195,7 @@ void exit_shell(vector<string> args)
         write(STDERR_FILENO, error_message, strlen(error_message));
     }
 }
+
 //performs change of directory; no command in args
 void cd_shell(vector<string> args)
 {
@@ -156,7 +222,7 @@ void path_shell(vector<string> args)
     else
     {
         path.clear();
-        for (int i = 0; i < args.size(); i++)
+        for (unsigned int i = 0; i < args.size(); i++)
         {
             path.push_back(args[i]);
         }
@@ -170,7 +236,7 @@ int redirect_status(vector<string> args)
     int files_count = 0;        //simply count args after first '>' found
     int out_status;
 
-    for (int i = 0; i < args.size(); i++)
+    for (unsigned int i = 0; i < args.size(); i++)
     {
         if (args[i].compare(">") == 0)
         {
@@ -218,7 +284,7 @@ void other_shell(vector<string> args, bool isParallel)
             //if there is an '>', get its location
             if (red_status == 1)
             {
-                for (int i = 0; i < args.size(); i++)
+                for (unsigned int i = 0; i < args.size(); i++)
                 {
                     if (args[i].compare(">") == 0)
                     {
@@ -239,7 +305,7 @@ void other_shell(vector<string> args, bool isParallel)
 
             //put the args into a char **array
             char **new_args = new char *[size_to_allocate + 1];
-            for (int i = 0; i < args.size(); i++)
+            for (unsigned int i = 0; i < args.size(); i++)
             {
                 if (args[i].compare(">") == 0)
                     break;
@@ -250,13 +316,13 @@ void other_shell(vector<string> args, bool isParallel)
 
             //determine if the command is accessible
             bool accessible = false;
-            for (int i = 0; i < path.size(); i++)
+            string abs_path;
+            for (unsigned int i = 0; i < path.size(); i++)
             {
-                string abs_path = path[i] + '/' + args[0];
+                abs_path = path[i] + '/' + args[0];
                 if (access(abs_path.c_str(), X_OK) == 0)
                 {
                     accessible = true;
-                    new_args[0] = strdup(abs_path.c_str());
                     break;
                 }
             }
@@ -292,7 +358,7 @@ void other_shell(vector<string> args, bool isParallel)
                         }
                     }
                     //execute the command
-                    execv(new_args[0], new_args);
+                    execv(abs_path.c_str(), new_args);
                     write(STDERR_FILENO, error_message, strlen(error_message));
                 }
                 else
@@ -309,14 +375,15 @@ void other_shell(vector<string> args, bool isParallel)
             write(STDERR_FILENO, error_message, strlen(error_message));
         }
     }
+    //if the process is called  and  isParallel = true then we do not to wait for the child
     if (!isParallel)
     {
         pid_t wpid;
-        while ((wpid = wait(NULL)) > 0)
-            ;
+        while ( (wpid= wait(NULL) ) > 0);
     }
 }
 
+//calls another functions which represent different commands
 void execute(vector<string> commands)
 {
     if (!commands.empty())
@@ -343,11 +410,12 @@ void execute(vector<string> commands)
         }
         default:
         {
-            //vector for parallel proccesses
+            //vector for parsing the parallel processes
+            //in case where there is no parallel processes it is just a copy of commands vector
             vector<string> cmd;
-            for (int i = 0; i < commands.size(); i++)
+            for (unsigned int i = 0; i < commands.size(); i++)
             {
-                //run a child proccess once you catch a '&'
+                //call other_shell() once you catch a '&'; pass the command and isParalle = true
                 if (commands[i].compare("&") == 0)
                 {
                     other_shell(cmd, true);
@@ -358,10 +426,11 @@ void execute(vector<string> commands)
                     cmd.push_back(commands[i]);
                 }
             }
-            //once the OLDEST parent will be done with collecting commands
-            //it will call the function (PARALLELLY) for the last time, while other children still work on their commands
+            //once the parent will be done with collecting commands
+            //it will call the function (NOT parallely) for the last time, while other children still work on their commands
             //the cmd vector will hold anything after the last '&'. It can be empty, or just a simple command
             //cmd vector can also collect all the elements from initial vector commands if no '&' will be met
+            //isParallel = false because this time  we actually we need to wait for the child/children
             other_shell(cmd, false);
             break;
         }
@@ -369,30 +438,26 @@ void execute(vector<string> commands)
     }
 }
 
+//function for interactive mode
 void interactive()
 {
     string input_command;
-    //char exit_command[] = "exit";
     vector<string> input_tokens;
-
-    do
-    {
+    do{
         cout << "wish> ";
         getline(cin, input_command);
         input_tokens = tokenize(input_command);
         execute(input_tokens);
-
-        //strcmp(input_tokens[0].c_str(), exit_command) != 0
     } while (cin);
 }
 
+//works like 'grep' in the last assignment
 void batch(string data_from_file)
 {
     string input_command;
     size_t newLinePos = 0;
     size_t oldPos = 0;
     vector<string> input_tokens;
-    //char exit_command[] = "exit";
 
     //look trhough the data
     do
@@ -413,58 +478,5 @@ void batch(string data_from_file)
 
         execute(input_tokens);
 
-        // && (strcmp(input_tokens[0].c_str(), exit_command) != 0)
     } while ((newLinePos < (data_from_file.length())));
-}
-
-int main(int argc, char *argv[])
-{
-
-    int fd;
-    string data_from_file;
-    int ret;
-    char buffer[4096];
-    path.push_back("/bin");
-
-    //choose the mode
-    if (argc == 1)
-    {
-        //interactive mode (no file for batch)
-        interactive();
-        exit(0);
-    }
-    else if (argc == 2)
-    {
-        //batch mode
-        fd = open(argv[1], O_RDONLY);
-
-        //check if the file is valid
-        if (fd < 0)
-        {
-            write(STDERR_FILENO, error_message, strlen(error_message));
-            exit(1);
-        }
-
-        //read everything from the file using a buffer to the string "data"
-        while ((ret = read(fd, buffer, 4096)) > 0)
-        {
-            data_from_file.append(buffer, ret);
-        }
-
-        //check if the file was empty
-        if (data_from_file.length() != 0)
-        {
-            batch(data_from_file);
-        }
-
-        close(fd);
-
-        exit(0);
-    }
-    else
-    {
-        //more than one argument(file) passed
-        write(STDERR_FILENO, error_message, strlen(error_message));
-        exit(1);
-    }
 }
