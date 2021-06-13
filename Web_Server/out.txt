@@ -1,0 +1,725 @@
+init thread: 0 
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+my_start_routine_enter thread: 1  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+my_start_routine_enter thread: 2  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 2  mutex: 0x1041074e8 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+my_start_routine_enter thread: 3  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 2  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+my_start_routine_enter thread: 4  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+my_start_routine_enter thread: 5  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 5  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 5  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+my_start_routine_enter thread: 6  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+my_start_routine_enter thread: 7  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+my_start_routine_enter thread: 8  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 8  mutex: 0x1041074e8 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_return thread: 8  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+my_start_routine_enter thread: 9  mutex: 0x0 cond: 0x0
+dthread_detach_enter thread: 0  mutex: 0x0 cond: 0x0
+dthread_detach_return thread: 0  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 9  mutex: 0x1041074e8 cond: 0x0
+my_start_routine_enter thread: 10  mutex: 0x0 cond: 0x0
+dthread_mutex_lock_enter thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+waiting_to_accept thread: 0 
+dthread_mutex_lock_return thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 1 client: 0x7fc532904080
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 1 client: 0x7fc532904080
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+invoke_service_method thread: 1 GET /bootstrap.html
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 1  RESPONSE 200 client: 0x7fc532904080
+close_connection thread: 1  client: 0x7fc532904080
+dthread_mutex_lock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 6 client: 0x7fc531d04080
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 6 client: 0x7fc531d04080
+invoke_service_method thread: 6 GET /bootstrap.html
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 6  RESPONSE 200 client: 0x7fc531d04080
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 6  client: 0x7fc531d04080
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 10  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 10  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 10  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 10 client: 0x7fc531c05b70
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 10 client: 0x7fc531c05b70
+invoke_service_method thread: 10 GET /bootstrap.html
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 10  RESPONSE 200 client: 0x7fc531c05b70
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 10  client: 0x7fc531c05b70
+dthread_mutex_lock_enter thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 3 client: 0x7fc531f040a0
+read_request_return thread: 3 client: 0x7fc531f040a0
+invoke_service_method thread: 3 GET /bootstrap.html
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 3  RESPONSE 200 client: 0x7fc531f040a0
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 3  client: 0x7fc531f040a0
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 4  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 4  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+read_request_enter thread: 4 client: 0x7fc531c05b70
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 4 client: 0x7fc531c05b70
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+invoke_service_method thread: 4 GET /bootstrap.html
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 4  RESPONSE 200 client: 0x7fc531c05b70
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 4  client: 0x7fc531c05b70
+dthread_mutex_lock_enter thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 4  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 9  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 9  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 9  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 9 client: 0x7fc531f040a0
+read_request_return thread: 9 client: 0x7fc531f040a0
+invoke_service_method thread: 9 GET /bootstrap.html
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 9  RESPONSE 200 client: 0x7fc531f040a0
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 9  client: 0x7fc531f040a0
+dthread_mutex_lock_enter thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 7  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 7  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 7  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 7 client: 0x7fc532e040a0
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 7 client: 0x7fc532e040a0
+invoke_service_method thread: 7 GET /bootstrap.html
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 7  RESPONSE 200 client: 0x7fc532e040a0
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 7  client: 0x7fc532e040a0
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 1 client: 0x7fc5328040b0
+read_request_return thread: 1 client: 0x7fc5328040b0
+invoke_service_method thread: 1 GET /bootstrap.html
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 1  RESPONSE 200 client: 0x7fc5328040b0
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 1  client: 0x7fc5328040b0
+dthread_mutex_lock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 10  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 10  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 10  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 10 client: 0x7fc532e04080
+read_request_return thread: 10 client: 0x7fc532e04080
+invoke_service_method thread: 10 GET /bootstrap.html
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 10  RESPONSE 200 client: 0x7fc532e04080
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 10  client: 0x7fc532e04080
+dthread_mutex_lock_enter thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 10  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 6 client: 0x7fc532904080
+read_request_return thread: 6 client: 0x7fc532904080
+invoke_service_method thread: 6 GET /bootstrap.html
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 6  RESPONSE 200 client: 0x7fc532904080
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 6  client: 0x7fc532904080
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+read_request_enter thread: 3 client: 0x7fc531c05b70
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 3 client: 0x7fc531c05b70
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+invoke_service_method thread: 3 GET /bootstrap.html
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 3  RESPONSE 200 client: 0x7fc531c05b70
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 3  client: 0x7fc531c05b70
+dthread_mutex_lock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+read_request_enter thread: 3 client: 0x7fc531f040c0
+read_request_return thread: 3 client: 0x7fc531f040c0
+invoke_service_method thread: 3 GET /bootstrap.html
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 3  RESPONSE 200 client: 0x7fc531f040c0
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 3  client: 0x7fc531f040c0
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 1  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 1 client: 0x7fc531f040c0
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 1 client: 0x7fc531f040c0
+invoke_service_method thread: 1 GET /bootstrap.html
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 1  RESPONSE 200 client: 0x7fc531f040c0
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 1  client: 0x7fc531f040c0
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 1  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 6  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+read_request_enter thread: 6 client: 0x7fc532804090
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 6 client: 0x7fc532804090
+invoke_service_method thread: 6 GET /bootstrap.html
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 6  RESPONSE 200 client: 0x7fc532804090
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 6  client: 0x7fc532804090
+dthread_mutex_lock_enter thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 6  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 7  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 7  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 7  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 7 client: 0x7fc531f040c0
+read_request_return thread: 7 client: 0x7fc531f040c0
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+invoke_service_method thread: 7 GET /bootstrap.html
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 7  RESPONSE 200 client: 0x7fc531f040c0
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 7  client: 0x7fc531f040c0
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 7  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 9  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 9  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+read_request_enter thread: 9 client: 0x7fc531c05b50
+read_request_return thread: 9 client: 0x7fc531c05b50
+invoke_service_method thread: 9 GET /bootstrap.html
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 9  RESPONSE 200 client: 0x7fc531c05b50
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 9  client: 0x7fc531c05b50
+dthread_mutex_lock_enter thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 9  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+client_accepted thread: 0 
+dthread_mutex_lock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_lock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_broadcast_enter thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_cond_broadcast_return thread: 0  mutex: 0x0 cond: 0x104107558
+dthread_mutex_unlock_enter thread: 0  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 0  mutex: 0x1041074e8 cond: 0x0
+waiting_to_accept thread: 0 
+dthread_cond_wait_return thread: 3  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_signal_enter thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_cond_signal_return thread: 3  mutex: 0x0 cond: 0x104107528
+dthread_mutex_unlock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_mutex_unlock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+read_request_enter thread: 3 client: 0x7fc532a040a0
+dthread_cond_wait_return thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 5  mutex: 0x1041074e8 cond: 0x104107558
+read_request_return thread: 3 client: 0x7fc532a040a0
+invoke_service_method thread: 3 GET /bootstrap.html
+dthread_cond_wait_return thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 4  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 10  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+write_response thread: 3  RESPONSE 200 client: 0x7fc532a040a0
+dthread_cond_wait_enter thread: 2  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 1  mutex: 0x1041074e8 cond: 0x104107558
+close_connection thread: 3  client: 0x7fc532a040a0
+dthread_cond_wait_return thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 6  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_enter thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_return thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 7  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 8  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_return thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_cond_wait_enter thread: 9  mutex: 0x1041074e8 cond: 0x104107558
+dthread_mutex_lock_return thread: 3  mutex: 0x1041074e8 cond: 0x0
+dthread_cond_wait_enter thread: 3  mutex: 0x1041074e8 cond: 0x104107558
